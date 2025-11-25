@@ -2,7 +2,7 @@
 ### **SQL Server | Python (NLTK Sentiment Analysis) | Power BI | Data Modeling | Dashboarding**
 **Extract → Transform → Load → Analyze → Visualize workflow**
 
-Live Dashboard: https://app.powerbi.com/view?r=eyJrIjoiMjVlZDNkNTYtZmQ4Yi00MmJhLWJiZjEtY2I0MDZmZTE2MTVlIiwidCI6IjVjZTJiMzZmLTA0OTMtNGU5MC1hOWJjLThmNWFhYTc1OTQ2ZCJ9
+#### Live Dashboard: https://app.powerbi.com/view?r=eyJrIjoiMjVlZDNkNTYtZmQ4Yi00MmJhLWJiZjEtY2I0MDZmZTE2MTVlIiwidCI6IjVjZTJiMzZmLTA0OTMtNGU5MC1hOWJjLThmNWFhYTc1OTQ2ZCJ9
 ---
 
 ## 📑 **Table of Contents**
@@ -37,8 +37,6 @@ The outcome is a complete, actionable analytics solution to improve performance 
 ---
 
 # <h2 id="executive-summary">**Executive Summary**</h2>
-
-**(As provided — unchanged)**
 
 ShopEasy, an online retail business, is experiencing a decline in customer engagement and conversion rates despite increased investment in marketing campaigns. This analysis aims to leverage existing customer and engagement data to identify the root causes, provide actionable insights, and ultimately improve the marketing strategy, boost conversion rates, enhance customer engagement, and improve customer feedback scores.
 
@@ -263,19 +261,33 @@ Customer Reviews & Sentiment
 <h2 id="project-structure">📁 Project Structure</h2>
 ShopEasy-Marketing-Analytics/
 │
+
 ├── data/
+
 │   ├── fact_customer_reviews_with_sentiment.csv
+
 │   └── MarketingAnalytics.bak
+
 │
+
 ├── sql/
+
 │   └── queries.sql
+
 │
+
 ├── python/
+
 │   └── sentiment_analysis.py
+
 │
+
 ├── powerbi/
+
 │   └── Marketing_Analytics_Dashboard.pbix
+
 │
+
 └── README.md
 
 ---
