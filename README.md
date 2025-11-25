@@ -1,9 +1,8 @@
-# 🛍️ **ShopEasy Marketing Analytics — End-to-End Data Analysis Project**
+# 🛍️ **ShopEasy Marketing Analytics**
 ### **SQL Server | Python (NLTK Sentiment Analysis) | Power BI | Data Modeling | Dashboarding**
+**Extract → Transform → Load → Analyze → Visualize workflow**
 
-A complete **end-to-end analytics project** that demonstrates skills across **SQL**, **Python**, **NLP**, **Power BI**, and **business storytelling**.  
-This project analyzes why ShopEasy is experiencing declining engagement, conversion rates, and mixed customer satisfaction—and provides actionable, data-backed recommendations.
-
+Live Dashboard: https://app.powerbi.com/view?r=eyJrIjoiMjVlZDNkNTYtZmQ4Yi00MmJhLWJiZjEtY2I0MDZmZTE2MTVlIiwidCI6IjVjZTJiMzZmLTA0OTMtNGU5MC1hOWJjLThmNWFhYTc1OTQ2ZCJ9
 ---
 
 ## 📑 **Table of Contents**
@@ -12,7 +11,7 @@ This project analyzes why ShopEasy is experiencing declining engagement, convers
 - <a href="#business-problem"><b>Business Problem</b></a>
 - <a href="#goals"><b>Goals</b></a>
 - <a href="#tools-technologies"><b>Tools & Technologies</b></a>
-- <a href="#project-flow"><b>End-to-End Project Flow</b></a>
+- <a href="#project-flow"><b>ETL Pipeline Workflow</b></a>
 - <a href="#sql"><b>MSSQL: Data Preparation</b></a>
 - <a href="#python"><b>Python: Sentiment Analysis</b></a>
 - <a href="#powerbi"><b>Power BI: Modeling & Dashboards</b></a>
@@ -37,7 +36,7 @@ The outcome is a complete, actionable analytics solution to improve performance 
 
 ---
 
-# <h2 id="executive-summary">📘 **Executive Summary**</h2>
+# <h2 id="executive-summary">**Executive Summary**</h2>
 
 **(As provided — unchanged)**
 
@@ -45,9 +44,7 @@ ShopEasy, an online retail business, is experiencing a decline in customer engag
 
 ---
 
-# <h2 id="business-problem">❗ **Business Problem**</h2>
-
-**(As provided — unchanged)**
+# <h2 id="business-problem">**Business Problem**</h2>
 
 ShopEasy is facing several key challenges that necessitate a data-driven approach to their marketing strategy:  
 • **Reduced Customer Engagement:** The number of customer interactions with the website and marketing content has declined.  
@@ -58,8 +55,6 @@ ShopEasy is facing several key challenges that necessitate a data-driven approac
 ---
 
 # <h2 id="goals">🎯 **Goals**</h2>
-
-**(As provided — unchanged)**
 
 1. **Increase Conversion Rates:** Identify factors impacting the conversion rate and provide recommendations for improvement.  
 2. **Enhance Customer Engagement:** Determine which types of content drive the highest engagement.  
@@ -74,25 +69,40 @@ ShopEasy is facing several key challenges that necessitate a data-driven approac
 | **Microsoft SQL Server** | Data extraction, cleaning, transformation, analysis |
 | **Python (Pandas, NLTK, SQLAlchemy)** | Sentiment analysis, SQL querying, data enrichment |
 | **Power BI** | Data modeling, dashboard creation, visual insights |
-| **SQLAlchemy + PyODBC** | Python ↔ SQL Server integration |
+| **SQLAlchemy** | Python ↔ SQL Server integration |
 | **NLTK VADER** | Sentiment classification (Positive, Mixed, Negative) |
 
 ---
 
-# <h2 id="project-flow">🔄 **End-to-End Project Flow**</h2>
+# <h2 id="project-flow">**ETL Pipeline WorkFlow**</h2>
 
-MSSQL → Data Cleaning & Standardization
-↓
-Python Sentiment Analysis → CSV Export
-↓
-Power BI → Data Modeling → DAX → Dashboards
-↓
-Insights → Recommendations
+**Extract → Transform → Load → Analyze**
 
+**1. Extract**  
+MSSQL → Raw Tables (Products, Customers, Reviews, Engagement, Journey)
 
-This flow demonstrates a full analytics lifecycle—from raw data to business-ready dashboards.
+&nbsp;⬇️
 
----
+**2. Transform**  
+MSSQL → Data Cleaning, Standardization, Deduplication  
+Python → Sentiment Analysis (VADER), Feature Engineering → CSV Export
+
+&nbsp;⬇️
+
+**3. Load**  
+Power BI → Import Clean SQL Data + Sentiment CSV → Build Star Schema Model
+
+&nbsp;⬇️
+
+**4. Analyze & Visualize**  
+Power BI → DAX → Interactive Dashboards → KPIs → Insights
+
+&nbsp;⬇️
+
+**5. Recommend**  
+Strategy Recommendations → Conversion Optimization → Engagement Improvements
+
+This workflow represents a complete **ETL + BI Analytics Pipeline**, transforming raw operational data into actionable business insights.
 
 # <h2 id="sql">🗄️ **MSSQL: Data Preparation & Analysis**</h2>
 
@@ -119,7 +129,7 @@ This flow demonstrates a full analytics lifecycle—from raw data to business-re
 
 ---
 
-# <h2 id="python">🐍 **Python: Sentiment Analysis**</h2>
+# <h2 id="python"> **Python: Sentiment Analysis**</h2>
 
 ### ✔ **Purpose**
 To understand customer sentiment more deeply than numeric ratings allow—helping identify hidden pain points and satisfaction drivers.
@@ -147,6 +157,8 @@ To understand customer sentiment more deeply than numeric ratings allow—helpin
 
 ### ✔ **Data Model (Star Schema)**
 
+<img width="1144" height="691" alt="image" src="https://github.com/user-attachments/assets/6fd51ee3-f6a4-4f07-a1ae-197624456713" />
+
 **Dimensions:**
 - `dim_products`  
 - `dim_customers`  
@@ -169,170 +181,139 @@ Likes = SUM(fact_engagement_data[Likes])
 Rating (Average) = AVERAGE(fact_customer_reviews[Rating])
 Number of Journeys = COUNT(fact_customer_journey[JourneyID])
 Conversion Rate = DIVIDE([Clicks], [Views], 0)
-
+```
 
 ✔ Dashboard Pages
 
 Overview Dashboard
+<img width="940" height="520" alt="image" src="https://github.com/user-attachments/assets/91e781de-df4e-4dac-bea5-0e10a402d325" />
+
 
 Conversion Performance
+<img width="940" height="526" alt="image" src="https://github.com/user-attachments/assets/9457e121-b1b6-46ee-a3cb-b5d4edb9c3f1" />
+
 
 Social Media Engagement
+<img width="940" height="529" alt="image" src="https://github.com/user-attachments/assets/44bcad8a-9a6a-44a0-9ed3-ecb9b77f4ceb" />
+
 
 Customer Reviews & Sentiment
+<img width="1450" height="819" alt="image" src="https://github.com/user-attachments/assets/dd7686f2-bd0a-4f00-888c-7d6d647f3204" />
 
-<h2 id="key-insights">🔍 Key Insights</h2>
-🟦 Conversion Trends
+---
+## <h2 id="key-insights">🔍 <strong>Key Insights</strong></h2>
 
-Average conversion rate: 9.57%
+### 🟦 **Conversion Trends**
+- **Average conversion rate:** 9.57%  
+- **Lowest conversion month:** October (6.15%)  
+- **Highest conversion month:** January (17.31%)  
+- Clear **seasonal performance patterns** observed throughout the year  
 
-Worst month: October (6.15%)
+---
 
-Best month: January (17.31%)
+### 🟧 **Engagement Trends**
+- **Views consistently declined** after April  
+- **Likes remained extremely low**, indicating weak interaction quality  
+- **Blogs** were the **best-performing content type**, generating the highest engagement  
+- Social media performance weakened mid-year, impacting reach and clicks  
 
-Strong seasonal impact
+---
 
-🟧 Engagement Trends
+### 🟩 **Customer Feedback Insights**
+- **Average customer rating:** 3.69 (below the target of 4.0)  
+- **Sentiment Analysis Breakdown:**  
+  - ⭐ **Positive:** 840 reviews  
+  - ⚠️ **Mixed Negative:** 196 reviews  
+  - 👍 **Mixed Positive:** 86 reviews  
+  - ❌ **Negative:** 226 reviews  
+  - ⚪ **Neutral:** 15 reviews  
 
-Views declined consistently after April
+- Large volume of **mixed reviews** suggests improvement opportunities in product experience  
+- Negative sentiment, though smaller, highlights **key pain points** affecting customer satisfaction  
 
-Likes remained near zero → poor interaction quality
+---
 
-Blogs performed best among all content types
 
-🟩 Customer Feedback
+## <h2 id="recommendations">📌 <strong>Recommended Actions</strong></h2>
 
-Average rating: 3.69
+### ✔ **Boost Conversion**
+- Focus on **high-performing product categories** (Ski Boots, Hockey Stick, Baseball Glove)  
+- Launch **seasonal promotions** during peak purchase periods (**Jan–Feb, Dec**)  
+- Strengthen **mid-year performance** (Mar–Jun) with targeted marketing campaigns and product offers  
 
-Sentiment breakdown:
+---
 
-Positive: 840
+### ✔ **Improve Engagement**
+- Refresh content strategy:  
+  - Use **interactive posts**, **short-form videos**, **reels**, and stronger **CTAs**  
+- Increase posting frequency and engagement-driven content during low-activity months (**Jul–Oct**)  
+- Optimize messaging to regain reach and attention across social platforms  
 
-Negative: 226
+---
 
-Mixed Negative: 196
+### ✔ **Raise Customer Satisfaction**
+- Analyze **Mixed Negative** review patterns to identify recurring product/service issues  
+- Implement a **customer follow-up workflow** for dissatisfied users  
+- Encourage customers to **re-rate their experience** after issue resolution  
+- Use sentiment signals to prioritize product improvements and service enhancements  
 
-Mixed Positive: 86
+---
 
-Neutral: 15
-
-<h2 id="recommendations">📌 Recommended Actions</h2>
-✔ Boost Conversion
-
-Focus on high-performing products (Ski Boots, Hockey Stick, Baseball Glove)
-
-Launch seasonal promotions Jan–Feb and Dec
-
-Improve mid-year performance (Mar–Jun) with targeted campaigns
-
-✔ Improve Engagement
-
-Refresh content strategy (interactive posts, reels, CTAs)
-
-Increase posting frequency Jul–Oct
-
-✔ Raise Customer Satisfaction
-
-Address recurring issues in mixed reviews
-
-Proactively follow up with dissatisfied customers
-
-Encourage re-rating once issues are resolved
-
-<h2 id="project-structure">📁 Project Structure</h2>
-✔ Dashboard Pages
-
-Overview Dashboard
-
-Conversion Performance
-
-Social Media Engagement
-
-Customer Reviews & Sentiment
-
-<h2 id="key-insights">🔍 Key Insights</h2>
-🟦 Conversion Trends
-
-Average conversion rate: 9.57%
-
-Worst month: October (6.15%)
-
-Best month: January (17.31%)
-
-Strong seasonal impact
-
-🟧 Engagement Trends
-
-Views declined consistently after April
-
-Likes remained near zero → poor interaction quality
-
-Blogs performed best among all content types
-
-🟩 Customer Feedback
-
-Average rating: 3.69
-
-Sentiment breakdown:
-
-Positive: 840
-
-Negative: 226
-
-Mixed Negative: 196
-
-Mixed Positive: 86
-
-Neutral: 15
-
-<h2 id="recommendations">📌 Recommended Actions</h2>
-✔ Boost Conversion
-
-Focus on high-performing products (Ski Boots, Hockey Stick, Baseball Glove)
-
-Launch seasonal promotions Jan–Feb and Dec
-
-Improve mid-year performance (Mar–Jun) with targeted campaigns
-
-✔ Improve Engagement
-
-Refresh content strategy (interactive posts, reels, CTAs)
-
-Increase posting frequency Jul–Oct
-
-✔ Raise Customer Satisfaction
-
-Address recurring issues in mixed reviews
-
-Proactively follow up with dissatisfied customers
-
-Encourage re-rating once issues are resolved
 
 <h2 id="project-structure">📁 Project Structure</h2>
+ShopEasy-Marketing-Analytics/
+│
+├── data/
+│   ├── fact_customer_reviews_with_sentiment.csv
+│   └── MarketingAnalytics.bak
+│
+├── sql/
+│   └── queries.sql
+│
+├── python/
+│   └── sentiment_analysis.py
+│
+├── powerbi/
+│   └── Marketing_Analytics_Dashboard.pbix
+│
+└── README.md
 
-<h2 id="run">▶️ How to Run This Project</h2>
-1. Restore SQL Database
+---
 
-Open SSMS
 
-Restore MarketingAnalytics.bak
+## <h2 id="run">▶️ <strong>How to Run This Project</strong></h2>
 
-Execute queries.sql
+### **1️⃣ Restore the SQL Database**
+1. Open **SQL Server Management Studio (SSMS)**  
+2. Restore the database using the backup file: `MarketingAnalytics.bak`  
+3. Execute all SQL data-cleaning and transformation scripts from:  
+   **`queries.sql`**
+
+---
+
+### **2️⃣ Run the Python Sentiment Analysis Script**
+Install required dependencies:
+
+```bash
 pip install pandas sqlalchemy nltk pyodbc
 python sentiment_analysis.py
+```
+This generates the enriched file:
 
-3. Open Power BI
+fact_customer_reviews_with_sentiment.csv
 
-Connect to SQL Server
+### **3️⃣ Open the Power BI Dashboard**
 
-Import the sentiment CSV
+1. Open **Power BI Desktop**  
+2. Connect to your **SQL Server instance**  
+3. Import the **sentiment CSV** file generated from Python  
+4. Open the dashboard file:  
+   **`Marketing_Analytics_Dashboard.pbix`**  
+5. Click **Refresh** to load the latest SQL data and sentiment-enhanced review dataset  
 
-Open Marketing_Analytics_Dashboard.pbix
+---
 
-<h2 id="author">👤 Author & Contact</h2>
+<h2 id="author-contact">Author & Contact</h2>
 
-Your Name
-📧 Email: your-email@example.com
-
-🔗 LinkedIn: your-linkedin-url
-🌐 Portfolio: your-portfolio-url
+* **Author:** Shazmeen Shaikh
+* **Contact:** https://www.linkedin.com/in/shazmeen-shaikh-30bb63237/
