@@ -17,7 +17,7 @@ nltk.download('vader_lexicon')
 #     "?driver=SQL+Server&trusted_connection=yes"
 # )
 engine = create_engine(
-    "mssql+pyodbc://@LAPTOP-TRL043NL/PortfolioProject_MarketingAnalytics"
+    "mssql+pyodbc://@Server_name/Database_name"
     "?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
 )
 
